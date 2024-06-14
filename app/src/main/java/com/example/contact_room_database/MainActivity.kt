@@ -12,9 +12,8 @@ import com.example.roomdatabase5.db.DBHelper
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    var contactlist = listOf<ContactEntity>()
-    private lateinit var contectAdapter: contactAdapter
+     lateinit var binding: ActivityMainBinding
+    var contactList = arrayListOf<ContactEntity>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,12 +30,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        var db = DBHelper.chekDB(this)
-        contactlist = db.contectDao().getAllContacts()
-        val adapter = contactAdapter(contactlist as ArrayList<ContactEntity>)
-        binding.rvdata.layoutManager = LinearLayoutManager(this)
-        binding.rvdata.adapter = adapter
+
+        val db  = DBHelper.chekDB(this)
+        contactList = db.contectDao().getAllContacts() as ArrayList<ContactEntity>
+
+        val dataadapter = contactAdapter(contactList as ArrayList<ContactEntity>)
+        binding.rvdata.adapter =dataadapter
     }
-
-
 }

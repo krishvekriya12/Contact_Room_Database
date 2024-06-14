@@ -19,7 +19,7 @@ abstract class DBHelper : RoomDatabase() {
             }
         }
 
-        private fun initDBHelper(context: Context): DBHelper {
+         fun initDBHelper(context: Context): DBHelper {
             return Room.databaseBuilder(context, DBHelper::class.java, "contact.db")
                 .allowMainThreadQueries().build()
         }
